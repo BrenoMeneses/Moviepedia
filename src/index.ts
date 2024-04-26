@@ -1,20 +1,20 @@
 import { AppDataSource } from "./data-source"
-import { User } from "./entity/User"
+import { Movie } from "./entity/Movie"
 
 AppDataSource.initialize().then(async () => {
 
-    console.log("Inserting a new user into the database...")
-    const user = new User()
-    user.firstName = "Timber"
-    user.lastName = "Saw"
-    user.age = 25
-    await AppDataSource.manager.save(user)
-    console.log("Saved a new user with id: " + user.id)
+    console.log("Inserting a new movie into the database...")
+    const movie = new Movie()
+    movie.name = "Timber"
+    movie.description = "Saw"
+    movie.categories = "25"
+    await AppDataSource.manager.save(movie)
+    console.log("Saved a new movie with id: " + movie.id)
 
-    console.log("Loading users from the database...")
-    const users = await AppDataSource.manager.find(User)
-    console.log("Loaded users: ", users)
+    console.log("Loading movies from the database...")
+    const movies = await AppDataSource.manager.find(Movie)
+    console.log("Loaded movies: ", movies)
 
     console.log("Here you can setup and run express / fastify / any other framework.")
 
-}).catch(error => console.log(error))
+}).catch(error => console.log("erro na conexão", error))
